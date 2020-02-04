@@ -3,9 +3,15 @@ import 'core/routes/navigation.dart';
 import 'features/authenticate/presentation/widgets/authentication_page.dart';
 import 'features/splash_screen/splash_screen_page.dart';
 
-Widget pushSplashPage() => SplashScreenPage();
+// Widget pushSplashPage() => SplashScreenPage();
+
+Widget pushSplashPage(BuildContext context) {
+  final SplashScreenPage splashScreenPage = SplashScreenPage();
+  // push(context, splashScreenPage, isFullScreen: true);
+  return splashScreenPage;
+}
 
 pushAuthenticationPage(BuildContext context) {
   final AuthenticationPage authenticationPage = AuthenticationPage();
-  push(context, authenticationPage);
+  pushAndReplace(context, authenticationPage);
 }

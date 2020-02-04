@@ -2,9 +2,18 @@ import 'package:flutter/widgets.dart';
 
 List<Widget> pages = [];
 
-void push(BuildContext context, Widget widget) {
-  Navigator.of(context).push(_createRoute(widget));
+void push(BuildContext context, Widget widget, {bool isFullScreen = false}) {
+  Navigator.of(context).push(_createRoute(widget, isFullScreen: isFullScreen));
   pages.add(widget);
+}
+
+void pushAndReplace(BuildContext context, Widget widget,
+    {bool isFullScreen = false}) {
+  Navigator.of(context)
+      .pushReplacement(_createRoute(widget, isFullScreen: isFullScreen));
+  if (pages.length > 0) {
+    pages[pages.length - 1] = widget;
+  }
 }
 
 void pop(BuildContext context) {
@@ -22,7 +31,8 @@ enum AnimationTransitionType {
 }
 Route _createRoute(Widget widget,
     {AnimationTransitionType animationType =
-        AnimationTransitionType.slide_right}) {
+        AnimationTransitionType.slide_right,
+    bool isFullScreen = false}) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => widget,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -37,5 +47,6 @@ Route _createRoute(Widget widget,
         child: child,
       );
     },
+    fullscreenDialog: isFullScreen,
   );
 }

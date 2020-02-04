@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:chat_mobile/routers.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +14,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: pushSplashPage(),
+      home: pushSplashPage(context),
     );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    pushSplashPage(context);
+    return Scaffold();
   }
 }
