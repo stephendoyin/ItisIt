@@ -28,6 +28,8 @@ dependencies:
 
   bloc_pattern: ^2.5.1
 
+  connectivity: ^0.4.6+2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,10 +48,17 @@ flutter:
     # assets-generator-begin
     # assets/image/*
     # assets-generator-end
+    # onboarding
     - assets/images/onboard/bg_gradient_01.png
     - assets/images/onboard/bg_gradient_02.png
     - assets/images/onboard/bg_gradient_03.png
     - assets/images/onboard/bg_gradient_04.png
+    - assets/images/onboard/ic_onboarding_send_receive.png
+    - assets/images/onboard/ic_onboarding_pay.png
+    - assets/images/onboard/ic_onboarding_deals.png
+    # general
+    - assets/images/general/ic_app.png
+    - assets/images/general/ic_loading.png
 
   
 
