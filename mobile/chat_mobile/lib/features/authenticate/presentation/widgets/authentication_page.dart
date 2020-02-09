@@ -9,130 +9,6 @@ class AuthenticationPage extends StatefulWidget {
 }
 
 class _AuthenticationPageState extends State<AuthenticationPage> {
-  final List<Widget> introWidgetsList = <Widget>[
-    Container(
-      child: Stack(
-        children: <Widget>[
-          Image(
-              image: AssetImage('assets/images/onboard/bg_gradient_01.png'),
-              fit: BoxFit.fitWidth),
-          SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Image.asset(
-                        'assets/images/onboard/ic_onboarding_send_receive.png',
-                        width: 300.0,
-                        height: 300.0),
-                    Text(
-                      "Send and receive payments to\nfriends and family quickly.",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    ),
-    Container(
-      child: Stack(
-        children: <Widget>[
-          Image(
-              image: AssetImage('assets/images/onboard/bg_gradient_01.png'),
-              fit: BoxFit.fitWidth),
-          SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Image.asset('assets/images/onboard/ic_onboarding_pay.png',
-                        width: 300.0, height: 300.0),
-                    Text(
-                      "Quickly checkout at hundreds of\nmerchants throughout The Bahamas\nwith a single tap.",
-                      textAlign: TextAlign.center,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    ),
-    Container(
-      child: Stack(
-        children: <Widget>[
-          Image(
-              image: AssetImage('assets/images/onboard/bg_gradient_03.png'),
-              fit: BoxFit.fitWidth),
-          SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Image.asset('assets/images/onboard/ic_onboarding_deals.png',
-                        width: 300.0, height: 300.0),
-                    Text(
-                      "When you spend you save. Our merchants offer exclusive deals daily. Take advantage and save.",
-                      textAlign: TextAlign.center,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    ),
-    Container(
-      child: Stack(
-        children: <Widget>[
-          Image(
-              image: AssetImage('assets/images/onboard/bg_gradient_04.png'),
-              fit: BoxFit.fitWidth),
-          SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Text("Prosper"),
-                    Text(
-                      "Out of the banks and in your hands.\nNo bank account or credit card required.\nLow to no transaction fees.",
-                      textAlign: TextAlign.center,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    )
-  ];
-
   int currentPageValue = 0;
   final controller = PageController(initialPage: 0);
 
@@ -336,6 +212,12 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Color> colors = [
+      Color(0xff1DA9C7),
+      Color(0xffADA9C7),
+      Color(0xff2DA9C7),
+      Color(0xff3DA9C7)
+    ];
     return Scaffold(
       body: Container(
         child: Stack(
@@ -343,7 +225,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
           children: <Widget>[
             PageView.builder(
                 physics: ClampingScrollPhysics(),
-                itemCount: introWidgetsList.length,
+                itemCount: 4,
                 onPageChanged: (int page) {
                   getChangedPageAndMoveBar(page);
                 },
@@ -351,37 +233,77 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                 itemBuilder: (context, index) {
                   return pageForIndex(context, index);
                 }),
-            SafeArea(
-              child: Container(
-                child: Stack(
-                  alignment: AlignmentDirectional.topStart,
+            Positioned(
+              bottom: 24,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
                         child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        for (int i = 0; i < introWidgetsList.length; i++)
+                        for (int i = 0; i < 4; i++)
                           if (i == currentPageValue) ...[
                             circleBar(true)
                           ] else ...[
                             circleBar(false)
                           ]
                       ],
-                    ))
+                    )),
+                    SizedBox(
+                      height: 37,
+                    ),
+                    Container(
+                      height: 60,
+                      padding: EdgeInsets.only(left: 45, right: 45),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "Get Started",
+                            style: TextStyle(
+                                color: Color(0xff1DA9C7), fontSize: 20),
+                          ),
+                          SizedBox(width: 34),
+                          Image.asset(
+                            'assets/images/general/ic_arrow_right.png',
+                            width: 12,
+                            height: 22,
+                            color: colors[0],
+                            fit: BoxFit.fitHeight,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Already have an account?",
+                      style: TextStyle(color: Colors.white, fontSize: 10),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Text(
+                      "Sign in",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
             ),
-            Visibility(
-              child: Align(
-                child: Container(
-                    child: FlatButton(
-                  child: Icon(Icons.ac_unit),
-                  onPressed: () {},
-                )),
-              ),
-            )
           ],
         ),
       ),

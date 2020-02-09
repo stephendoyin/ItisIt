@@ -59,6 +59,8 @@ flutter:
     # general
     - assets/images/general/ic_app.png
     - assets/images/general/ic_loading.png
+    - assets/images/general/ic_arrow_right.png
+    
 
   
 
