@@ -1,16 +1,22 @@
 import 'dart:ui';
 
+import 'package:chat_mobile/core/language/language.dart';
+import 'package:chat_mobile/core/language/language_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class AuthenticationPage extends StatefulWidget {
+import 'package:chat_mobile/global_providers.dart';
+
+class OnboardingPage extends StatefulWidget {
   @override
-  _AuthenticationPageState createState() => _AuthenticationPageState();
+  _OnboardingPageState createState() => _OnboardingPageState();
 }
 
-class _AuthenticationPageState extends State<AuthenticationPage> {
+class _OnboardingPageState extends State<OnboardingPage> {
   int currentPageValue = 0;
   final controller = PageController(initialPage: 0);
+  final BaseLanguage currentLanguage = languageProvider.getCurrentLanguage();
 
   void getChangedPageAndMoveBar(int page) {
     setState(() {
@@ -49,7 +55,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                             width: 300.0,
                             height: 300.0),
                         Text(
-                          "Send and receive payments to\nfriends and family quickly.",
+                          currentLanguage.onboardPage.onboardingMessage1,
+                          // "Send and receive payments to\nfriends and family quickly.",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,
@@ -91,7 +98,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                             width: 300.0,
                             height: 300.0),
                         Text(
-                          "Quickly checkout at hundreds of\nmerchants throughout The Bahamas\nwith a single tap.",
+                          currentLanguage.onboardPage.onboardingMessage2,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,
@@ -130,7 +137,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                         Container(
                           width: 300,
                           child: Text(
-                            "When you spend you save. Our merchants offer exclusive deals daily. Take advantage and save.",
+                            currentLanguage.onboardPage.onboardingMessage3,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
@@ -186,7 +193,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                         ),
                         Flexible(
                           child: Text(
-                            "Out of the banks and in your hands.\nNo bank account or credit card required.\nLow to no transaction fees.",
+                            currentLanguage.onboardPage.onboardingMessage4,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
@@ -268,7 +275,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                         // crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            "Get Started",
+                            currentLanguage.onboardPage.getStarted,
                             style: TextStyle(
                                 color: textColors[currentPageValue],
                                 fontSize: 20),
@@ -288,14 +295,14 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                       height: 40,
                     ),
                     Text(
-                      "Already have an account?",
+                      currentLanguage.onboardPage.alreadyHaveAnAccount,
                       style: TextStyle(color: Colors.white, fontSize: 10),
                     ),
                     SizedBox(
                       height: 12,
                     ),
                     Text(
-                      "Sign in",
+                      currentLanguage.onboardPage.signIn,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 28,

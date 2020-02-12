@@ -1,3 +1,4 @@
+import 'package:chat_mobile/features/onboarding/onboarding_page.dart';
 import 'package:flutter/widgets.dart';
 import 'core/routes/navigation.dart';
 import 'features/authenticate/presentation/widgets/authentication_page.dart';
@@ -9,6 +10,11 @@ Widget pushSplashPage(BuildContext context) {
   final SplashScreenPage splashScreenPage = SplashScreenPage();
   // push(context, splashScreenPage, isFullScreen: true);
   return splashScreenPage;
+}
+
+pushToOnboardingPage(BuildContext context) {
+  final OnboardingPage onboardingPage = OnboardingPage();
+  pushAndReplace(context, onboardingPage);
 }
 
 pushAuthenticationPage(BuildContext context) {

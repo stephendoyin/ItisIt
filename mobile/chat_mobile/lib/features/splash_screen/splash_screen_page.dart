@@ -34,7 +34,7 @@ class _SplashScreenPageState extends State<SplashScreenPage>
   Widget build(BuildContext context) {
     Timer.periodic(Duration(seconds: 10), (timer) {
       timer.cancel();
-      pushAuthenticationPage(context);
+      pushToOnboardingPage(context);
     });
     return Scaffold(
       body: Container(

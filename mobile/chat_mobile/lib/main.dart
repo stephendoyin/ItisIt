@@ -1,9 +1,19 @@
-import 'dart:async';
-
+import 'package:provider/provider.dart';
+import './core/language/language.dart';
+import './core/theme/theme.dart' as theme;
 import 'package:chat_mobile/routers.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'global_providers.dart';
+
+// Run app
+void main() => runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<theme.ThemeProvider>.value(value: themeProvider),
+        ChangeNotifierProvider<LanguageProvider>.value(value: languageProvider)
+      ],
+      child: MyApp(),
+    ));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
