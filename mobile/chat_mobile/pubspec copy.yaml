@@ -50,13 +50,28 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     # assets-generator-begin
+    # assets/image/*
+    # assets-generator-end
+    # onboarding
+    - assets/
     - assets/images/
-    - assets/images/authenticate/
     - assets/images/general/
     - assets/images/onboard/
-    - assets/images/register/
-    # assets-generator-end
+    # - assets/images/onboard/bg_gradient_01.png
+    # - assets/images/onboard/bg_gradient_02.png
+    # - assets/images/onboard/bg_gradient_03.png
+    # - assets/images/onboard/bg_gradient_04.png
+    # - assets/images/onboard/ic_onboarding_send_receive.png
+    # - assets/images/onboard/ic_onboarding_pay.png
+    # - assets/images/onboard/ic_onboarding_deals.png
+    # # general
+    # - assets/images/general/ic_app.png
+    # - assets/images/general/ic_loading.png
+    # - assets/images/general/ic_arrow_right.png
+    
+
   
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
@@ -70,7 +85,8 @@ flutter:
     - family: Gilroy
       fonts:
         - asset: assets/fonts/Gilroy/Radomir_Tinkov_Gilroy_Black.otf
-        - asset: assets/fonts/Gilroy/Radomir Tinkov - Gilroy-BlackItalic.otf        
+        - asset: assets/fonts/Gilroy/Radomir Tinkov - Gilroy-BlackItalic.otf
+        
           style: italic
   #   - family: Trajan Pro
   #     fonts:

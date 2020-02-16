@@ -1,11 +1,9 @@
 import 'dart:ui';
-
 import 'package:chat_mobile/core/language/language.dart';
-import 'package:chat_mobile/core/language/language_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import 'package:chat_mobile/r.dart';
+import 'styles.dart';
 import 'package:chat_mobile/global_providers.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -35,11 +33,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
           child: Stack(
             children: <Widget>[
               Image(
-                  image: AssetImage('assets/images/onboard/bg_gradient_01.png'),
+                  image: AssetImage(R.onboard.bgGradient01),
                   fit: BoxFit.cover,
                   width: screenSize.width,
                   height: screenSize.height),
-              // Image.asset('assets/images/onboard/bg_gradient_01.png', width: screenSize.width, height: screenSize.height),
               SafeArea(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -50,18 +47,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Image.asset(
-                            'assets/images/onboard/ic_onboarding_send_receive.png',
-                            width: 300.0,
-                            height: 300.0),
+                        Image.asset(R.onboard.icOnboardingSendReceive,
+                            width: 300.0, height: 300.0),
                         Text(
                           currentLanguage.onboardPage.onboardingMessage1,
                           // "Send and receive payments to\nfriends and family quickly.",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
+                          style: messageTextStyle,
                         )
                       ],
                     ),
@@ -75,11 +67,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
         return Container(
           //  height: screenSize.height,
           //  width: screenSize.width,
-          color: Colors.blue,
           child: Stack(
             children: <Widget>[
               Image(
-                  image: AssetImage('assets/images/onboard/bg_gradient_02.png'),
+                  image: AssetImage(R.onboard.bgGradient02),
                   fit: BoxFit.cover,
                   width: screenSize.width,
                   height: screenSize.height),
@@ -93,17 +84,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Image.asset(
-                            'assets/images/onboard/ic_onboarding_pay.png',
-                            width: 300.0,
-                            height: 300.0),
+                        Image.asset(R.onboard.icOnboardingPay,
+                            width: 300.0, height: 300.0),
                         Text(
                           currentLanguage.onboardPage.onboardingMessage2,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
+                          style: messageTextStyle,
                         )
                       ],
                     ),
@@ -115,11 +101,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
         );
       case 2:
         return Container(
-          color: Colors.blue,
           child: Stack(
             children: <Widget>[
               Image(
-                  image: AssetImage('assets/images/onboard/bg_gradient_03.png'),
+                  image: AssetImage(R.onboard.bgGradient03),
                   fit: BoxFit.cover,
                   width: screenSize.width,
                   height: screenSize.height),
@@ -129,7 +114,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Image.asset('assets/images/onboard/ic_onboarding_deals.png',
+                    Image.asset(R.onboard.icOnboardingDeals,
                         width: 300.0, height: 300.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -139,10 +124,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           child: Text(
                             currentLanguage.onboardPage.onboardingMessage3,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
+                            style: messageTextStyle,
                           ),
                         ),
                       ],
@@ -155,11 +137,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
         );
       case 3:
         return Container(
-          color: Colors.blue,
           child: Stack(
             children: <Widget>[
               Image(
-                  image: AssetImage('assets/images/onboard/bg_gradient_04.png'),
+                  image: AssetImage(R.onboard.bgGradient04),
                   fit: BoxFit.cover,
                   width: screenSize.width,
                   height: screenSize.height),
@@ -195,10 +176,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           child: Text(
                             currentLanguage.onboardPage.onboardingMessage4,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
+                            style: messageTextStyle,
                           ),
                         )
                       ],
@@ -212,8 +190,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
       default:
         return Image(
-            image: AssetImage('assets/images/onboard/bg_gradient_02.png'),
-            fit: BoxFit.cover);
+            image: AssetImage(R.onboard.bgGradient02), fit: BoxFit.cover);
     }
   }
 
@@ -282,7 +259,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           ),
                           SizedBox(width: 34),
                           Image.asset(
-                            'assets/images/general/ic_arrow_right.png',
+                            R.general.icArrowRight,
                             width: 12,
                             height: 22,
                             color: textColors[currentPageValue],
@@ -301,13 +278,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     SizedBox(
                       height: 12,
                     ),
-                    Text(
-                      currentLanguage.onboardPage.signIn,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    Text(currentLanguage.onboardPage.signIn,
+                        style: signinTextStyle),
                   ],
                 ),
               ),

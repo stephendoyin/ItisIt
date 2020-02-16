@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/foundation/diagnostics.dart';
 
 enum ThemeType {
@@ -30,12 +31,12 @@ final ThemeData _darkTheme = ThemeData(
   ),
 );
 
-ThemeData themeByType(ThemeType type) {
+BaseTheme themeByType(ThemeType type) {
   switch (type) {
     case ThemeType.light:
-      return _lightTheme;
+      return LightTheme();
     case ThemeType.dark:
-      return _darkTheme;
+      return DarkTheme();
   }
 }
 
@@ -43,14 +44,32 @@ ThemeData themeByType(ThemeType type) {
 // use ThemeData only can custom exist theme properties
 
 // Full Custom theme
-class BaseTheme {
-  Color color1;
+const String DefaultFontFamily = "Gilroy";
+
+abstract class BaseTheme {
+  Color get colorWhite => Colors.white;
+  Color get colorRed => Colors.red;
+  Color get colorGreen => Colors.green;
+  Color get colorBlue => Colors.blue;
+  Color get colorYellow => Colors.yellow;
+  Color get colorOrange => Colors.orange;
+  Color get colorPink => Colors.pink;
+
+  TextStyle get smallTextStyle => TextStyle();
 }
 
+@immutable
 class LightTheme extends BaseTheme {
-  Color color1 = Colors.white12;
+  TextStyle get smallTextStyle => TextStyle(
+      fontFamily: DefaultFontFamily,
+      fontSize: 10,
+      fontWeight: FontWeight.normal);
 }
 
+@immutable
 class DarkTheme extends BaseTheme {
-  Color color1 = Colors.black12;
+  TextStyle get smallTextStyle => TextStyle(
+      fontFamily: DefaultFontFamily,
+      fontSize: 10,
+      fontWeight: FontWeight.normal);
 }

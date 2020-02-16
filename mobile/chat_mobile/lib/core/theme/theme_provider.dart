@@ -4,7 +4,8 @@ import 'themes.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeType _curThemeType;
-  ThemeData _themeData;
+  BaseTheme _themeData;
+  BaseTheme get currentTheme => _themeData;
 
   ThemeProvider(ThemeType curThemeType) {
     _curThemeType = curThemeType;
