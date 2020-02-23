@@ -1,0 +1,14 @@
+//
+//  development.xcconfig
+//  Runner
+//
+//  Created by Salvatore on 26/04/18.
+//  Copyright © 2018 The Chromium Authors. All rights reserved.
+//
+
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+FLUTTER_APP_NAME=KANOO_PICKUP
+server_url = www.iatka.it/api
+server_port = 80
+protocol = https

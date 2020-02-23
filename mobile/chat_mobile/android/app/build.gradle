@@ -36,6 +36,19 @@ android {
         disable 'InvalidPackage'
     }
 
+    flavorDimensions "flavors"
+        productFlavors {
+        development {
+            dimension "flavors"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
+        production {
+            dimension "flavors"
+        }
+    }
+
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.chat_mobile"

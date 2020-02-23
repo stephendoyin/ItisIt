@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:chat_mobile/core/language/language.dart';
+import 'package:chat_mobile/routers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_mobile/r.dart';
@@ -240,33 +241,38 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     SizedBox(
                       height: 37,
                     ),
-                    Container(
-                      height: 60,
-                      padding: EdgeInsets.only(left: 45, right: 45),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                    FlatButton(
+                      child: Container(
+                        height: 60,
+                        padding: EdgeInsets.only(left: 45, right: 45),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              currentLanguage.onboardPage.getStarted,
+                              style: TextStyle(
+                                  color: textColors[currentPageValue],
+                                  fontSize: 20),
+                            ),
+                            SizedBox(width: 34),
+                            Image.asset(
+                              R.general.icArrowRight,
+                              width: 12,
+                              height: 22,
+                              color: textColors[currentPageValue],
+                              fit: BoxFit.fitHeight,
+                            )
+                          ],
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            currentLanguage.onboardPage.getStarted,
-                            style: TextStyle(
-                                color: textColors[currentPageValue],
-                                fontSize: 20),
-                          ),
-                          SizedBox(width: 34),
-                          Image.asset(
-                            R.general.icArrowRight,
-                            width: 12,
-                            height: 22,
-                            color: textColors[currentPageValue],
-                            fit: BoxFit.fitHeight,
-                          )
-                        ],
-                      ),
+                      onPressed: () {
+                        pushToRegisterPage(context);
+                      },
                     ),
                     SizedBox(
                       height: 40,
@@ -278,8 +284,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     SizedBox(
                       height: 12,
                     ),
-                    Text(currentLanguage.onboardPage.signIn,
-                        style: signinTextStyle),
+                    FlatButton(
+                      child: Text(currentLanguage.onboardPage.signIn,
+                          style: signinTextStyle),
+                      onPressed: () {
+                        pushAuthenticationPage(context);
+                      },
+                    ),
                   ],
                 ),
               ),

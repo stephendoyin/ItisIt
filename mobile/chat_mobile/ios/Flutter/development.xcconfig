@@ -1,0 +1,11 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "Generated.xcconfig"
+
+FLUTTER_BUILD_MODE=Debug
+FLUTTER_TARGET=lib/main-dev.dart
+FLUTTER_APP_NAME=KANOO_PICKUP_DEV_1
+
+server_url = www.iatka.it/api/dev
+server_port = 8080
+protocol = http
+bundle_suffix = .dev

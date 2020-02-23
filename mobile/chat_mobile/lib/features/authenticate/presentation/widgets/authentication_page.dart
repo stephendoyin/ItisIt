@@ -10,7 +10,11 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(child: Text("data")),
+      body: Container(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[Text("Authentication page")])),
     );
   }
 }

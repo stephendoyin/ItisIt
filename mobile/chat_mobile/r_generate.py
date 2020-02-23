@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # NOTE: all images need to place in folder or hirachy folder of ROOT_FOLDER
-#      file pubspec.yaml  NEED have these two line in assets section
+#      file pubspec.yaml  NEED have these two line with content defined in sinalStart, sinalEnd in assets the section like this:
 #        # assets-generator-begin
 #        # assets-generator-end
 import os
@@ -9,10 +9,14 @@ import os
 currentPath = os.path.dirname(__file__)
 folderToImports = []
 ROOT_FOLDER = 'assets/images'
+sinalStart = "assets-generator-begin"
+sinalEnd = "assets-generator-end"
 
 
 # out put string expect
-# R {
+# final Resource R = Resource();
+#
+# Resource {
 #   final General general = General()
 #   final String someImage = "someImage.jpg"
 #   final String some
@@ -21,7 +25,7 @@ ROOT_FOLDER = 'assets/images'
 # class General {
 #   final String someImage = "someImage.jpg"
 # }
-
+#
 # class AB {
 #   final A a = A()
 #   final B a = B()
@@ -56,7 +60,7 @@ def processFileName(fileName):
     removedSpaceString = replacedUnderscoreString.replace(" ", "")
     return lowerOnlyFirstCharacter(removedSpaceString)
 
-# Create separate class which contain files as property
+# Create separate class with properties is files
 
 
 def generateResourceForFolder(folderPath, folderName, level):
@@ -66,10 +70,10 @@ def generateResourceForFolder(folderPath, folderName, level):
     for fileName in os.listdir(folderPath):
         newPath = os.path.join(folderPath, fileName)
         if os.path.isdir(newPath):
-            # folder 2.0x and 3.0x is for high resolution screen, flutter will auto detect to use,
+            # Folder 2.0x and 3.0x is for high resolution screen, flutter will auto detect to use,
             # so not generate image path for it
             if fileName != "2.0x" and fileName != "3.0x":
-                # cycle create class
+                # Recursive create class for folder
                 folderToImports.append(folderPath + "/" + fileName)
                 processedFolderName = processFolderName(fileName)
                 stringArray.append(
@@ -113,13 +117,13 @@ with open(os.path.join(currentPath, 'pubspec.yaml'), "r+") as filePubspec:
     allLines = filePubspec.readlines()
     filePubspec.seek(0)
     for line in allLines:
-        if "assets-generator-begin" in line:
+        if sinalStart in line:
             filePubspec.write(line)
             started = True
             # filePubspec.writelines(folderToImports)
             for folderPath in folderToImports:
                 filePubspec.write("    - " + folderPath + "/\n")
-        if "assets-generator-end" in line:
+        if sinalEnd in line:
             ended = True
         if started == True and ended == False:
             continue

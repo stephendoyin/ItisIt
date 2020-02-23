@@ -8,7 +8,7 @@ import 'global_providers.dart';
 
 // Run app
 void main() {
-  FlavorConfig(flavor: Flavor.PRODUCTION, color: Colors.deepPurpleAccent);
+  FlavorConfig(flavor: Flavor.DEV, color: Colors.deepPurpleAccent);
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<theme.ThemeProvider>.value(value: themeProvider),
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: pushSplashPage(context),
+      home: Scaffold(),
     );
   }
 }
